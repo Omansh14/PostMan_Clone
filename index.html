@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="prism.css">
+        <link rel="shortcut icon" href="img.png" type="image/x-icon">
+
+        <style>
+            #ResponsePre{
+                max-height: 500px;
+                max-width: 1200px;
+
+            }
+        </style>
+
+    <title>PostMan</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">PostMaster</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="my-3">Welcome to PostMaster</h1>
+    </div>
+
+    <div class="container">
+        <!-- -------url------- -->
+        <form>
+            <div class="form-group row">
+                <label for="InputUrl" class="col-sm-2 col-form-label">URL</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="InputUrl" placeholder="Enter your URL ">
+                </div>
+            </div>
+
+            <!-- Request Type  -->
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Request Type</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="RequestType" id="Get" value="GET"
+                                checked>
+                            <label class="form-check-label" for="get">
+                                Get Request
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="RequestType" id="Post" value="POST">
+                            <label class="form-check-label" for="post">
+                                Post Request
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Content type wheather it is JSON Or Content type -->
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Content Type</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ContentType" id="JsonRadio"
+                                value="JSON" checked>
+                            <label class="form-check-label" for="Json">
+                                JSON Type
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ContentType" id="ParamsRadio"
+                                value="param">
+                            <label class="form-check-label" for="param">
+                                Custom Parameter
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- parameter Box this will hide on clicking JSON option -->
+            <div id="ParameterBox">
+                <div class="form-row">
+                    <label for="InputUrl" class="col-sm-2 col-form-label">Parameter-1</label>
+                    <div class=" col-md-4">
+                        <input type="text" class="form-control" id="ParameterKey1" placeholder="Enter Parameter-1 key">
+                    </div>
+                    <div class=" col-md-4">
+                        <input type="text" class="form-control" id="ParameterValue1"
+                            placeholder="Enter Parameter-1 Value">
+                    </div>
+                    <button id="AddParam" class="btn btn-primary">+</button>
+                </div>
+                <!-- For adding New Parameter when click on add Button  -->
+                <div id="Params"></div>
+            </div>
+
+            <!-- JSON Request box this will hide on clicking Paramter in content type -->
+
+            <div class=" my-5" id="RequestJsonBox">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-lable" for="requestJsonBox">Enter Request JSON </label>
+                    <div class=" col-sm-10 ">
+                        <textarea class="form-control" id="RequestJsonText" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- button submit which trigger fetch api  -->
+            <div class=" form-group col-md-3 my-3">
+                <button id="Submit" class="btn btn-primary">Submit</button>
+            </div>
+
+            <!-- Response box where your response shown  -->
+
+            <div class=" my-5" id="ResponseJsonBox">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-lable" for="ResponseJsonBox"> Response </label>
+                    <div class=" col-sm-10 ">
+                        <!-- <textarea class="form-control" id="ResponseJsonText"
+                            rows="3">your response will be appear here</textarea> -->
+
+                            <pre id="ResponsePre" class="language-javascript">
+                                <code id="ResponsePrism" class="language-javascript"></code>
+                            </pre> 
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="index.js"></script>
+    <!-- <script src="prism.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
