@@ -1,7 +1,7 @@
-console.log("Postman");
+// console.log("Postman");
 
-// utility Function
-// 1.utility function to Get Dom Element from String
+/*utility Function
+1.utility function to Get Dom Element from String */
 
 function getElementFromString(string) {
   let div = document.createElement("div");
@@ -18,23 +18,23 @@ let addedParamsCount = 0;
 // let parameterBox = document.getElementById("ParameterBox")
 // parameterBox.style.display='none';
 
-// if the user click the params Box , hide the JASON Box
+// if the user click the params Box , hide the Json Box
 
 let paramsRadio = document.getElementById("ParamsRadio");
 paramsRadio.addEventListener("click", () => {
   //   console.log("Params");
-  document.getElementById("RequestJasonBox").style.display = "none";
+  document.getElementById("RequestJsonBox").style.display = "none";
   document.getElementById("ParameterBox").style.display = "block";
 });
 
-// if the user click on JASON Box , Hide the param Box
+// if the user click on Json Box , Hide the param Box
 
-let jasonRadio = document.getElementById("JasonRadio");
-jasonRadio.addEventListener("click", () => {
-  //   console.log("Jason");
+let JsonRadio = document.getElementById("JsonRadio");
+JsonRadio.addEventListener("click", () => {
+  //   console.log("Json");
 
   document.getElementById("ParameterBox").style.display = "none";
-  document.getElementById("RequestJasonBox").style.display = "block";
+  document.getElementById("RequestJsonBox").style.display = "block";
 });
 
 let addparam = document.getElementById("AddParam");
@@ -84,7 +84,7 @@ Submit.addEventListener("click", (e) => {
   e.preventDefault();
   // Show Please Wait in the Response Box To request Patience from the user
 
-  // document.getElementById("ResponseJasonText").value =
+  // document.getElementById("ResponseJsonText").value =
   //   "Please Wait  Fetching Your Response ....";
 
   document.getElementById("ResponsePrism").innerHTML =
@@ -105,7 +105,7 @@ Submit.addEventListener("click", (e) => {
   // console.log("RequestType is " , RequestType)
   // console.log("contentType is " , contentType)
 
-  // if User has used a Params Option insted of JASON , collect all the Parameter in an Object
+  // if User has used a Params Option insted of Json , collect all the Parameter in an Object
 
   let data = {};
   if (contentType == "param") {
@@ -119,14 +119,14 @@ Submit.addEventListener("click", (e) => {
 
     data = JSON.stringify(data); // converting object data into String
   } else {
-    data = document.getElementById("RequestJasonText").value;
+    data = document.getElementById("RequestJsonText").value;
   }
 
   //Log all the value in the console for Debugging
-  console.log("url is url", url);
-  console.log("RequestType is ", RequestType);
-  console.log("contentType is ", contentType);
-  console.log("Data is ", data);
+  // console.log("url is url", url);
+  // console.log("RequestType is ", RequestType);
+  // console.log("contentType is ", contentType);
+  // console.log("Data is ", data);
 
   // if our Request Type is GET , invoke fetch api to create a Post Request
 
@@ -136,7 +136,7 @@ Submit.addEventListener("click", (e) => {
     })
       .then((Response) => Response.text())
       .then((text) => {
-        // document.getElementById("ResponseJasonText").value = text;
+        // document.getElementById("ResponseJsonText").value = text;
         document.getElementById("ResponsePrism").innerHTML = text;
 
       });
@@ -150,7 +150,7 @@ Submit.addEventListener("click", (e) => {
     })
       .then((Response) => Response.text())
       .then((text) => {
-        // document.getElementById("ResponseJasonText").value = text;
+        // document.getElementById("ResponseJsonText").value = text;
         document.getElementById("ResponsePrism").innerHTML = text;
       });
   }
