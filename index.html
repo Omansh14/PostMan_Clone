@@ -17,7 +17,9 @@
             #ResponsePre{
                 max-height: 500px;
                 max-width: 1200px;
-
+                min-height: 100px;
+                display: flex;
+                justify-items: center;
             }
         </style>
 
@@ -111,14 +113,14 @@
             <div id="ParameterBox">
                 <div class="form-row">
                     <label for="InputUrl" class="col-sm-2 col-form-label">Parameter-1</label>
-                    <div class=" col-md-4">
+                    <div class=" col-md-4 my-1">
                         <input type="text" class="form-control" id="ParameterKey1" placeholder="Enter Parameter-1 key">
                     </div>
-                    <div class=" col-md-4">
+                    <div class=" col-md-4 my-1">
                         <input type="text" class="form-control" id="ParameterValue1"
                             placeholder="Enter Parameter-1 Value">
                     </div>
-                    <button id="AddParam" class="btn btn-primary">+</button>
+                    <button id="AddParam" class="btn btn-primary m-1">+</button>
                 </div>
                 <!-- For adding New Parameter when click on add Button  -->
                 <div id="Params"></div>
